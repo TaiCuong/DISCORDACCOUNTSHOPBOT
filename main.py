@@ -1,8 +1,12 @@
-from config import API_TOKEN
+import os
 import telebot
 from telebot.types import InlineKeyboardButton, InlineKeyboardMarkup
+API_TOKEN = os.getenv("TOKEN")
 
-bot = telebot.TeleBot(token=API_TOKEN)
+if not API_TOKEN:
+    raise ValueError("TOKEN không tồn tại!")
+
+bot = telebot.TeleBot(API_TOKEN)
 # user_id = []
 # @bot.message_handler(commands=['start'])
 # def welcome(message):
